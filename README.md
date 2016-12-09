@@ -3,7 +3,7 @@ Default Grafana dashboards for inspectIT
 
 inspectIT provides a set of preconfigured dashboards that can be imported into a Grafana instance to visualize inspectIT data out of the box.
 
-Preconfigure Datasource in Grafana
+### Preconfigure Datasource in Grafana
 The default dashboards provided on this page have been created with Grafana version 3.1.1. These dashboards may be incompatible with other Grafana versions.
 To use the default dashboards, the data source must be configured correctly. Therefore follow these configuration steps
 
