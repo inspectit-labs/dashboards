@@ -1,0 +1,908 @@
+{
+  "id": 1,
+  "title": "Business Transactions",
+  "tags": [],
+  "style": "dark",
+  "timezone": "browser",
+  "editable": true,
+  "hideControls": false,
+  "sharedCrosshair": false,
+  "rows": [
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "columns": [
+            {
+              "text": "Count",
+              "value": "count"
+            },
+            {
+              "text": "Current",
+              "value": "current"
+            },
+            {
+              "text": "Avg",
+              "value": "avg"
+            },
+            {
+              "text": "Max",
+              "value": "max"
+            }
+          ],
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fontSize": "100%",
+          "id": 3,
+          "isNew": true,
+          "links": [],
+          "pageSize": null,
+          "scroll": true,
+          "showHeader": true,
+          "sort": {
+            "col": 0,
+            "desc": true
+          },
+          "span": 12,
+          "styles": [
+            {
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "pattern": "Time",
+              "type": "date"
+            },
+            {
+              "colorMode": "value",
+              "colors": [
+                "rgba(50, 172, 45, 0.97)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(245, 54, 54, 0.9)"
+              ],
+              "decimals": 2,
+              "pattern": "Max",
+              "thresholds": [
+                "1000",
+                "3000"
+              ],
+              "type": "number",
+              "unit": "ms"
+            },
+            {
+              "colorMode": "value",
+              "colors": [
+                "rgba(50, 172, 45, 0.97)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(245, 54, 54, 0.9)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 2,
+              "pattern": "Avg",
+              "thresholds": [
+                "1000",
+                "3000"
+              ],
+              "type": "number",
+              "unit": "ms"
+            },
+            {
+              "colorMode": "value",
+              "colors": [
+                "rgba(50, 172, 45, 0.97)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(245, 54, 54, 0.9)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 2,
+              "pattern": "Current",
+              "thresholds": [
+                "1000",
+                "3000"
+              ],
+              "type": "number",
+              "unit": "ms"
+            }
+          ],
+          "targets": [
+            {
+              "alias": "$tag_businessTxName",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "businessTxName"
+                  ],
+                  "type": "tag"
+                }
+              ],
+              "measurement": "businessTransactions",
+              "policy": "default",
+              "query": "SELECT  \"duration\" FROM \"businessTransactions\" WHERE \"applicationName\" =~ /^$Application$/ AND $timeFilter GROUP BY \"businessTxName\"",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "duration"
+                    ],
+                    "type": "field"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "applicationName",
+                  "operator": "=~",
+                  "value": "/^$Application$/"
+                }
+              ]
+            }
+          ],
+          "title": "",
+          "transform": "timeseries_aggregations",
+          "transparent": false,
+          "type": "table"
+        }
+      ],
+      "showTitle": true,
+      "title": "Business Transactions Overview"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "50px",
+      "panels": [
+        {
+          "content": "",
+          "editable": true,
+          "error": false,
+          "id": 7,
+          "isNew": true,
+          "links": [],
+          "mode": "markdown",
+          "span": 4,
+          "title": "",
+          "transparent": true,
+          "type": "text"
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": false,
+          "colorValue": true,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(4, 110, 0, 0.97)"
+          ],
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "format": "none",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "id": 5,
+          "interval": null,
+          "isNew": true,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "span": 2,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "targets": [
+            {
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "auto"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "businessTransactions",
+              "policy": "default",
+              "query": "SELECT count(\"duration\") FROM \"businessTransactions\" WHERE \"applicationName\" =~ /^$Application$/ AND \"businessTxName\" =~ /^$BusinessTx$/ AND $timeFilter AND \"duration\"<$SlowThreshold",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "duration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "count"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "thresholds": "0,0",
+          "title": "Num Normal requests (RT < $SlowThreshold)",
+          "transparent": true,
+          "type": "singlestat",
+          "valueFontSize": "150%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "avg"
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": false,
+          "colorValue": true,
+          "colors": [
+            "rgba(108, 0, 0, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "format": "none",
+          "gauge": {
+            "maxValue": 4,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "id": 4,
+          "interval": null,
+          "isNew": true,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "span": 2,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "targets": [
+            {
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "auto"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "businessTransactions",
+              "policy": "default",
+              "query": "SELECT count(\"duration\") FROM \"businessTransactions\" WHERE \"applicationName\" =~ /^$Application$/ AND \"businessTxName\" =~ /^$BusinessTx$/ AND $timeFilter AND \"duration\">=$SlowThreshold",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "duration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "count"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "thresholds": "1000000000000,1000000000000000",
+          "title": "Num Slow requests (RT > $SlowThreshold)",
+          "transparent": true,
+          "type": "singlestat",
+          "valueFontSize": "150%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "0",
+              "value": "null"
+            }
+          ],
+          "valueName": "avg"
+        }
+      ],
+      "showTitle": true,
+      "title": "Business Transaction Details: $BusinessTx"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "id": 2,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "avg",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "auto"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "businessTransactions",
+              "policy": "default",
+              "query": "SELECT mean(\"duration\") FROM \"businessTransactions\" WHERE \"applicationName\" =~ /^$Application$/ AND \"businessTxName\" =~ /^$BusinessTx$/ AND $timeFilter GROUP BY time(1m) fill(null)",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "duration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "applicationName",
+                  "operator": "=~",
+                  "value": "/^$Application$/"
+                },
+                {
+                  "condition": "AND",
+                  "key": "businessTxName",
+                  "operator": "=~",
+                  "value": "/^$BusinessTx$/"
+                }
+              ]
+            },
+            {
+              "alias": "95 percentile",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "businessTransactions",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "duration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [
+                      95
+                    ],
+                    "type": "percentile"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "applicationName",
+                  "operator": "=~",
+                  "value": "/^$Application$/"
+                },
+                {
+                  "condition": "AND",
+                  "key": "businessTxName",
+                  "operator": "=~",
+                  "value": "/^$BusinessTx$/"
+                }
+              ]
+            },
+            {
+              "alias": "max",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "businessTransactions",
+              "policy": "default",
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "duration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "applicationName",
+                  "operator": "=~",
+                  "value": "/^$Application$/"
+                },
+                {
+                  "condition": "AND",
+                  "key": "businessTxName",
+                  "operator": "=~",
+                  "value": "/^$BusinessTx$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Response Time: $BusinessTx",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "id": 6,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "avg",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "auto"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "businessTransactions",
+              "policy": "default",
+              "query": "SELECT count(\"duration\") FROM \"businessTransactions\" WHERE \"applicationName\" =~ /^$Application$/ AND \"businessTxName\" =~ /^$BusinessTx$/ AND $timeFilter GROUP BY time(1m) fill(null)",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "duration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "applicationName",
+                  "operator": "=~",
+                  "value": "/^$Application$/"
+                },
+                {
+                  "condition": "AND",
+                  "key": "businessTxName",
+                  "operator": "=~",
+                  "value": "/^$BusinessTx$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Throughput: $BusinessTx",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "none",
+              "label": "req / min",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ]
+        }
+      ],
+      "title": "New row"
+    }
+  ],
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": "DVDStore",
+          "value": "DVDStore"
+        },
+        "datasource": "inspectit-influx",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "Application",
+        "options": [
+          {
+            "text": "DVDStore",
+            "value": "DVDStore",
+            "selected": true
+          },
+          {
+            "text": "Unknown Application",
+            "value": "Unknown Application",
+            "selected": false
+          }
+        ],
+        "query": "SHOW TAG VALUES FROM \"businessTransactions\" WITH KEY = \"applicationName\"",
+        "refresh": 2,
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "Home",
+          "value": "Home"
+        },
+        "datasource": "inspectit-influx",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "BusinessTx",
+        "options": [
+          {
+            "text": "Browse",
+            "value": "Browse",
+            "selected": false
+          },
+          {
+            "text": "Home",
+            "value": "Home",
+            "selected": true
+          },
+          {
+            "text": "Search",
+            "value": "Search",
+            "selected": false
+          },
+          {
+            "text": "Unknown Transaction",
+            "value": "Unknown Transaction",
+            "selected": false
+          }
+        ],
+        "query": "SHOW TAG VALUES FROM \"businessTransactions\" WITH KEY = \"businessTxName\"  WHERE applicationName=~ /$Application/",
+        "refresh": 2,
+        "type": "query"
+      },
+      {
+        "current": {
+          "tags": [],
+          "text": "1000",
+          "value": "1000"
+        },
+        "datasource": null,
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "SlowThreshold",
+        "options": [
+          {
+            "selected": false,
+            "text": "200",
+            "value": "200"
+          },
+          {
+            "selected": false,
+            "text": "500",
+            "value": "500"
+          },
+          {
+            "selected": true,
+            "text": "1000",
+            "value": "1000"
+          },
+          {
+            "selected": false,
+            "text": "2000",
+            "value": "2000"
+          },
+          {
+            "selected": false,
+            "text": "3000",
+            "value": "3000"
+          },
+          {
+            "selected": false,
+            "text": "4000",
+            "value": "4000"
+          },
+          {
+            "selected": false,
+            "text": "5000",
+            "value": "5000"
+          },
+          {
+            "selected": false,
+            "text": "10000",
+            "value": "10000"
+          }
+        ],
+        "query": "200,500,1000,2000,3000,4000,5000,10000",
+        "refresh": 0,
+        "type": "custom"
+      }
+    ]
+  },
+  "annotations": {
+    "list": []
+  },
+  "refresh": "5s",
+  "schemaVersion": 12,
+  "version": 9,
+  "links": [],
+  "gnetId": null
+}

@@ -1,0 +1,1743 @@
+{
+  "id": 11,
+  "title": "System Overview",
+  "tags": [],
+  "style": "dark",
+  "timezone": "browser",
+  "editable": true,
+  "hideControls": false,
+  "sharedCrosshair": false,
+  "rows": [
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "content": "<p align=\"center\" style=\"font-size:22px\">$AgentName</p>\n",
+          "editable": true,
+          "error": false,
+          "height": "20px",
+          "id": 7,
+          "isNew": true,
+          "links": [],
+          "mode": "html",
+          "repeatIteration": 1473847151516,
+          "scopedVars": {
+            "AgentName": {
+              "text": "DVDStore",
+              "value": "DVDStore",
+              "selected": false
+            }
+          },
+          "span": 12,
+          "style": {
+            "font-size": "60pt"
+          },
+          "title": "",
+          "transparent": true,
+          "type": "text"
+        },
+        {
+          "aliasColors": {
+            "used heap memory": "#6ED0E0"
+          },
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "height": "350px",
+          "id": 6,
+          "isNew": true,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1473847151516,
+          "scopedVars": {
+            "AgentName": {
+              "text": "DVDStore",
+              "value": "DVDStore",
+              "selected": false
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "Avg CPU utilization",
+              "color": "#6ED0E0"
+            }
+          ],
+          "span": 4,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "min",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "cpu",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "minUtilization"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "agentName",
+                  "operator": "=~",
+                  "value": "/^$AgentName$/"
+                }
+              ]
+            },
+            {
+              "alias": "Avg CPU utilization",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "cpu",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "avgUtilization"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "agentName",
+                  "operator": "=~",
+                  "value": "/^$AgentName$/"
+                }
+              ]
+            },
+            {
+              "alias": "max",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "cpu",
+              "policy": "default",
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "maxUtilization"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "agentName",
+                  "operator": "=~",
+                  "value": "/^$AgentName$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "CPU Utilization",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "percent",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ]
+        },
+        {
+          "aliasColors": {
+            "used heap memory": "#6ED0E0"
+          },
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "height": "350px",
+          "id": 1,
+          "isNew": true,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1473847151516,
+          "scopedVars": {
+            "AgentName": {
+              "text": "DVDStore",
+              "value": "DVDStore",
+              "selected": false
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "committed heap",
+              "fill": 3,
+              "stack": "A",
+              "zindex": -3
+            },
+            {
+              "alias": "uncommitted heap",
+              "color": "#9AC48A",
+              "fill": 3,
+              "stack": "A"
+            }
+          ],
+          "span": 4,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "min",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "memory",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "minUsedHeapMemorySize"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "agentName",
+                  "operator": "=~",
+                  "value": "/^$AgentName$/"
+                }
+              ]
+            },
+            {
+              "alias": "used heap memory",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "memory",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "avgUsedHeapMemorySize"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "agentName",
+                  "operator": "=~",
+                  "value": "/^$AgentName$/"
+                }
+              ]
+            },
+            {
+              "alias": "max",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "memory",
+              "policy": "default",
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "maxUsedHeapMemorySize"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "agentName",
+                  "operator": "=~",
+                  "value": "/^$AgentName$/"
+                }
+              ]
+            },
+            {
+              "alias": "committed heap",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "memory",
+              "policy": "default",
+              "query": "SELECT max(\"committedHeapMemorySize\") FROM \"memory\" WHERE \"agentName\" =~ /^$AgentName$/ AND $timeFilter GROUP BY time(1m) fill(null)",
+              "rawQuery": true,
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "committedHeapMemorySize"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "agentName",
+                  "operator": "=~",
+                  "value": "/^$AgentName$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Heap Memory",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "transparent": false,
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "bytes",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ]
+        },
+        {
+          "aliasColors": {
+            "used heap memory": "#6ED0E0"
+          },
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "height": "350px",
+          "id": 2,
+          "isNew": true,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1473847151516,
+          "scopedVars": {
+            "AgentName": {
+              "text": "DVDStore",
+              "value": "DVDStore",
+              "selected": false
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "commited non-heap memory",
+              "fill": 3,
+              "zindex": -3
+            },
+            {
+              "alias": "used non-heap memory",
+              "color": "#6ED0E0"
+            }
+          ],
+          "span": 4,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "min",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "memory",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "minUsedNonHeapMemorySize"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "agentName",
+                  "operator": "=~",
+                  "value": "/^$AgentName$/"
+                }
+              ]
+            },
+            {
+              "alias": "used non-heap memory",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "memory",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "avgUsedNonHeapMemorySize"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "agentName",
+                  "operator": "=~",
+                  "value": "/^$AgentName$/"
+                }
+              ]
+            },
+            {
+              "alias": "max",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "memory",
+              "policy": "default",
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "maxUsedNonHeapMemorySize"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "agentName",
+                  "operator": "=~",
+                  "value": "/^$AgentName$/"
+                }
+              ]
+            },
+            {
+              "alias": "commited non-heap memory",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "memory",
+              "policy": "default",
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "committedNonHeapMemorySize"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "agentName",
+                  "operator": "=~",
+                  "value": "/^$AgentName$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Non-Heap Memory",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "bytes",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ]
+        }
+      ],
+      "repeat": "AgentName",
+      "scopedVars": {
+        "AgentName": {
+          "text": "DVDStore",
+          "value": "DVDStore",
+          "selected": false
+        }
+      },
+      "showTitle": false,
+      "title": "System -- $AgentName"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "content": "<p align=\"center\" style=\"font-size:22px\">$AgentName</p>\n",
+          "editable": true,
+          "error": false,
+          "height": "20px",
+          "id": 8,
+          "isNew": true,
+          "links": [],
+          "mode": "html",
+          "repeatIteration": 1473847151516,
+          "scopedVars": {
+            "AgentName": {
+              "text": "MyTest",
+              "value": "MyTest",
+              "selected": false
+            }
+          },
+          "span": 12,
+          "style": {
+            "font-size": "60pt"
+          },
+          "title": "",
+          "transparent": true,
+          "type": "text"
+        },
+        {
+          "aliasColors": {
+            "used heap memory": "#6ED0E0"
+          },
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "height": "350px",
+          "id": 9,
+          "isNew": true,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1473847151516,
+          "scopedVars": {
+            "AgentName": {
+              "text": "MyTest",
+              "value": "MyTest",
+              "selected": false
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "Avg CPU utilization",
+              "color": "#6ED0E0"
+            }
+          ],
+          "span": 4,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "min",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "cpu",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "minUtilization"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "agentName",
+                  "operator": "=~",
+                  "value": "/^$AgentName$/"
+                }
+              ]
+            },
+            {
+              "alias": "Avg CPU utilization",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "cpu",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "avgUtilization"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "agentName",
+                  "operator": "=~",
+                  "value": "/^$AgentName$/"
+                }
+              ]
+            },
+            {
+              "alias": "max",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "cpu",
+              "policy": "default",
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "maxUtilization"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "agentName",
+                  "operator": "=~",
+                  "value": "/^$AgentName$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "CPU Utilization",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "percent",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ]
+        },
+        {
+          "aliasColors": {
+            "used heap memory": "#6ED0E0"
+          },
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "height": "350px",
+          "id": 10,
+          "isNew": true,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1473847151516,
+          "scopedVars": {
+            "AgentName": {
+              "text": "MyTest",
+              "value": "MyTest",
+              "selected": false
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "committed heap",
+              "fill": 3,
+              "stack": "A",
+              "zindex": -3
+            },
+            {
+              "alias": "uncommitted heap",
+              "color": "#9AC48A",
+              "fill": 3,
+              "stack": "A"
+            }
+          ],
+          "span": 4,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "min",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "memory",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "minUsedHeapMemorySize"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "agentName",
+                  "operator": "=~",
+                  "value": "/^$AgentName$/"
+                }
+              ]
+            },
+            {
+              "alias": "used heap memory",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "memory",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "avgUsedHeapMemorySize"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "agentName",
+                  "operator": "=~",
+                  "value": "/^$AgentName$/"
+                }
+              ]
+            },
+            {
+              "alias": "max",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "memory",
+              "policy": "default",
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "maxUsedHeapMemorySize"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "agentName",
+                  "operator": "=~",
+                  "value": "/^$AgentName$/"
+                }
+              ]
+            },
+            {
+              "alias": "committed heap",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "memory",
+              "policy": "default",
+              "query": "SELECT max(\"committedHeapMemorySize\") FROM \"memory\" WHERE \"agentName\" =~ /^$AgentName$/ AND $timeFilter GROUP BY time(1m) fill(null)",
+              "rawQuery": true,
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "committedHeapMemorySize"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "agentName",
+                  "operator": "=~",
+                  "value": "/^$AgentName$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Heap Memory",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "transparent": false,
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "bytes",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ]
+        },
+        {
+          "aliasColors": {
+            "used heap memory": "#6ED0E0"
+          },
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "height": "350px",
+          "id": 11,
+          "isNew": true,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1473847151516,
+          "scopedVars": {
+            "AgentName": {
+              "text": "MyTest",
+              "value": "MyTest",
+              "selected": false
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "commited non-heap memory",
+              "fill": 3,
+              "zindex": -3
+            },
+            {
+              "alias": "used non-heap memory",
+              "color": "#6ED0E0"
+            }
+          ],
+          "span": 4,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "min",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "memory",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "minUsedNonHeapMemorySize"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "agentName",
+                  "operator": "=~",
+                  "value": "/^$AgentName$/"
+                }
+              ]
+            },
+            {
+              "alias": "used non-heap memory",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "memory",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "avgUsedNonHeapMemorySize"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "agentName",
+                  "operator": "=~",
+                  "value": "/^$AgentName$/"
+                }
+              ]
+            },
+            {
+              "alias": "max",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "memory",
+              "policy": "default",
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "maxUsedNonHeapMemorySize"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "agentName",
+                  "operator": "=~",
+                  "value": "/^$AgentName$/"
+                }
+              ]
+            },
+            {
+              "alias": "commited non-heap memory",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "memory",
+              "policy": "default",
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "committedNonHeapMemorySize"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "agentName",
+                  "operator": "=~",
+                  "value": "/^$AgentName$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Non-Heap Memory",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "bytes",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": 1473847151516,
+      "repeatRowId": 1,
+      "scopedVars": {
+        "AgentName": {
+          "text": "MyTest",
+          "value": "MyTest",
+          "selected": false
+        }
+      },
+      "showTitle": false,
+      "title": "System -- $AgentName"
+    }
+  ],
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "value": [
+            "$__all"
+          ],
+          "text": "All"
+        },
+        "datasource": null,
+        "hide": 0,
+        "includeAll": true,
+        "multi": true,
+        "name": "AgentName",
+        "options": [
+          {
+            "text": "All",
+            "value": "$__all",
+            "selected": true
+          },
+          {
+            "text": "DVDStore",
+            "value": "DVDStore",
+            "selected": false
+          },
+          {
+            "text": "MyTest",
+            "value": "MyTest",
+            "selected": false
+          }
+        ],
+        "query": "SHOW TAG VALUES FROM \"memory\" WITH KEY = \"agentName\"",
+        "refresh": 2,
+        "type": "query"
+      }
+    ]
+  },
+  "annotations": {
+    "list": []
+  },
+  "schemaVersion": 12,
+  "version": 5,
+  "links": [],
+  "gnetId": null
+}

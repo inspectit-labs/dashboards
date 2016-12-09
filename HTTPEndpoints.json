@@ -1,0 +1,1504 @@
+{
+  "id": 13,
+  "title": "HTTP Endpoints",
+  "tags": [],
+  "style": "dark",
+  "timezone": "browser",
+  "editable": true,
+  "hideControls": false,
+  "sharedCrosshair": false,
+  "rows": [
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "height": "400px",
+          "id": 2,
+          "isNew": true,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1473847151557,
+          "scopedVars": {},
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "color": "#6ED0E0",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "avg",
+              "color": "#6ED0E0"
+            }
+          ],
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "$tag_inspectitTaggingHeader",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "inspectitTaggingHeader"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "uri"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "http",
+              "policy": "default",
+              "query": "SELECT max(\"duration\") FROM \"businessTransactions\" WHERE \"applicationName\" =~ /^$Application$/ AND \"businessTxName\" =~ /^$BusinessTx$/ AND $timeFilter GROUP BY time(1m) fill(null)",
+              "rawQuery": false,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "duration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "inspectitTaggingHeader",
+                  "operator": "=~",
+                  "value": "/^$header$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Response Time (Grouped by inspectIT Tagging Header)",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "height": "400px",
+          "id": 3,
+          "isNew": true,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "color": "#6ED0E0",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "avg",
+              "color": "#6ED0E0"
+            }
+          ],
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "$tag_uri",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "uri"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "uri"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "http",
+              "policy": "default",
+              "query": "SELECT max(\"duration\") FROM \"businessTransactions\" WHERE \"applicationName\" =~ /^$Application$/ AND \"businessTxName\" =~ /^$BusinessTx$/ AND $timeFilter GROUP BY time(1m) fill(null)",
+              "rawQuery": false,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "duration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "uri",
+                  "operator": "=~",
+                  "value": "/^$URI$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Response Time (Grouped by URI)",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": "Method",
+      "scopedVars": {
+        "Method": {
+          "selected": false,
+          "text": "com.jboss.dvd.seam.FullTextSearchAction.searchTitle(java.lang.String)",
+          "value": "com.jboss.dvd.seam.FullTextSearchAction.searchTitle(java.lang.String)"
+        }
+      },
+      "title": ""
+    }
+  ],
+  "time": {
+    "from": "2016-09-14T09:35:41.638Z",
+    "to": "2016-09-14T11:04:47.457Z"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "value": [
+            "/dvdstore/browse",
+            "/dvdstore/checkout"
+          ],
+          "text": "/dvdstore/browse + /dvdstore/checkout"
+        },
+        "datasource": "inspectit-influx",
+        "hide": 0,
+        "includeAll": true,
+        "multi": true,
+        "name": "URI",
+        "options": [
+          {
+            "text": "All",
+            "value": "$__all",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/browse",
+            "value": "/dvdstore/browse",
+            "selected": true
+          },
+          {
+            "text": "/dvdstore/checkout",
+            "value": "/dvdstore/checkout",
+            "selected": true
+          },
+          {
+            "text": "/dvdstore/complete",
+            "value": "/dvdstore/complete",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/confirm",
+            "value": "/dvdstore/confirm",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd",
+            "value": "/dvdstore/dvd",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/1",
+            "value": "/dvdstore/dvd/1",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/10",
+            "value": "/dvdstore/dvd/10",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/10155",
+            "value": "/dvdstore/dvd/10155",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/102",
+            "value": "/dvdstore/dvd/102",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/103",
+            "value": "/dvdstore/dvd/103",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/104",
+            "value": "/dvdstore/dvd/104",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/10580",
+            "value": "/dvdstore/dvd/10580",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/11",
+            "value": "/dvdstore/dvd/11",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/111",
+            "value": "/dvdstore/dvd/111",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/112",
+            "value": "/dvdstore/dvd/112",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/114",
+            "value": "/dvdstore/dvd/114",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/115",
+            "value": "/dvdstore/dvd/115",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/117",
+            "value": "/dvdstore/dvd/117",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/118",
+            "value": "/dvdstore/dvd/118",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/11853",
+            "value": "/dvdstore/dvd/11853",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/119",
+            "value": "/dvdstore/dvd/119",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/123",
+            "value": "/dvdstore/dvd/123",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/125",
+            "value": "/dvdstore/dvd/125",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/126",
+            "value": "/dvdstore/dvd/126",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/128",
+            "value": "/dvdstore/dvd/128",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/129",
+            "value": "/dvdstore/dvd/129",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/131",
+            "value": "/dvdstore/dvd/131",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/134",
+            "value": "/dvdstore/dvd/134",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/135",
+            "value": "/dvdstore/dvd/135",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/136",
+            "value": "/dvdstore/dvd/136",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/137",
+            "value": "/dvdstore/dvd/137",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/141",
+            "value": "/dvdstore/dvd/141",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/143",
+            "value": "/dvdstore/dvd/143",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/148",
+            "value": "/dvdstore/dvd/148",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/154",
+            "value": "/dvdstore/dvd/154",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/155",
+            "value": "/dvdstore/dvd/155",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/157",
+            "value": "/dvdstore/dvd/157",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/1587",
+            "value": "/dvdstore/dvd/1587",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/159",
+            "value": "/dvdstore/dvd/159",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/16",
+            "value": "/dvdstore/dvd/16",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/160",
+            "value": "/dvdstore/dvd/160",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/161",
+            "value": "/dvdstore/dvd/161",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/165",
+            "value": "/dvdstore/dvd/165",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/166",
+            "value": "/dvdstore/dvd/166",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/167",
+            "value": "/dvdstore/dvd/167",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/168",
+            "value": "/dvdstore/dvd/168",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/169",
+            "value": "/dvdstore/dvd/169",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/17",
+            "value": "/dvdstore/dvd/17",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/171",
+            "value": "/dvdstore/dvd/171",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/172",
+            "value": "/dvdstore/dvd/172",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/174",
+            "value": "/dvdstore/dvd/174",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/175",
+            "value": "/dvdstore/dvd/175",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/176",
+            "value": "/dvdstore/dvd/176",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/18",
+            "value": "/dvdstore/dvd/18",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/182",
+            "value": "/dvdstore/dvd/182",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/183",
+            "value": "/dvdstore/dvd/183",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/186",
+            "value": "/dvdstore/dvd/186",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/18785",
+            "value": "/dvdstore/dvd/18785",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/18786",
+            "value": "/dvdstore/dvd/18786",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/189",
+            "value": "/dvdstore/dvd/189",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/19",
+            "value": "/dvdstore/dvd/19",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/190",
+            "value": "/dvdstore/dvd/190",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/19137",
+            "value": "/dvdstore/dvd/19137",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/195",
+            "value": "/dvdstore/dvd/195",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/198",
+            "value": "/dvdstore/dvd/198",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/199",
+            "value": "/dvdstore/dvd/199",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/2",
+            "value": "/dvdstore/dvd/2",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/208",
+            "value": "/dvdstore/dvd/208",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/21",
+            "value": "/dvdstore/dvd/21",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/211",
+            "value": "/dvdstore/dvd/211",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/217",
+            "value": "/dvdstore/dvd/217",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/218",
+            "value": "/dvdstore/dvd/218",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/22",
+            "value": "/dvdstore/dvd/22",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/220",
+            "value": "/dvdstore/dvd/220",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/222",
+            "value": "/dvdstore/dvd/222",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/225",
+            "value": "/dvdstore/dvd/225",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/23",
+            "value": "/dvdstore/dvd/23",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/231",
+            "value": "/dvdstore/dvd/231",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/232",
+            "value": "/dvdstore/dvd/232",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/233",
+            "value": "/dvdstore/dvd/233",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/237",
+            "value": "/dvdstore/dvd/237",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/24",
+            "value": "/dvdstore/dvd/24",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/241",
+            "value": "/dvdstore/dvd/241",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/246",
+            "value": "/dvdstore/dvd/246",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/24697",
+            "value": "/dvdstore/dvd/24697",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/24698",
+            "value": "/dvdstore/dvd/24698",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/2520",
+            "value": "/dvdstore/dvd/2520",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/254",
+            "value": "/dvdstore/dvd/254",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/255",
+            "value": "/dvdstore/dvd/255",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/257",
+            "value": "/dvdstore/dvd/257",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/261",
+            "value": "/dvdstore/dvd/261",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/262",
+            "value": "/dvdstore/dvd/262",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/26302",
+            "value": "/dvdstore/dvd/26302",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/26303",
+            "value": "/dvdstore/dvd/26303",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/266",
+            "value": "/dvdstore/dvd/266",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/268",
+            "value": "/dvdstore/dvd/268",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/27",
+            "value": "/dvdstore/dvd/27",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/270",
+            "value": "/dvdstore/dvd/270",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/275",
+            "value": "/dvdstore/dvd/275",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/27778",
+            "value": "/dvdstore/dvd/27778",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/279",
+            "value": "/dvdstore/dvd/279",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/28",
+            "value": "/dvdstore/dvd/28",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/280",
+            "value": "/dvdstore/dvd/280",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/281",
+            "value": "/dvdstore/dvd/281",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/286",
+            "value": "/dvdstore/dvd/286",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/287",
+            "value": "/dvdstore/dvd/287",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/289",
+            "value": "/dvdstore/dvd/289",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/29",
+            "value": "/dvdstore/dvd/29",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/290",
+            "value": "/dvdstore/dvd/290",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/3",
+            "value": "/dvdstore/dvd/3",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/305",
+            "value": "/dvdstore/dvd/305",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/30811",
+            "value": "/dvdstore/dvd/30811",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/30812",
+            "value": "/dvdstore/dvd/30812",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/30813",
+            "value": "/dvdstore/dvd/30813",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/31",
+            "value": "/dvdstore/dvd/31",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/310",
+            "value": "/dvdstore/dvd/310",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/311",
+            "value": "/dvdstore/dvd/311",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/31142",
+            "value": "/dvdstore/dvd/31142",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/31143",
+            "value": "/dvdstore/dvd/31143",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/31144",
+            "value": "/dvdstore/dvd/31144",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/313",
+            "value": "/dvdstore/dvd/313",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/314",
+            "value": "/dvdstore/dvd/314",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/316",
+            "value": "/dvdstore/dvd/316",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/317",
+            "value": "/dvdstore/dvd/317",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/319",
+            "value": "/dvdstore/dvd/319",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/32",
+            "value": "/dvdstore/dvd/32",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/320",
+            "value": "/dvdstore/dvd/320",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/322",
+            "value": "/dvdstore/dvd/322",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/324",
+            "value": "/dvdstore/dvd/324",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/325",
+            "value": "/dvdstore/dvd/325",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/326",
+            "value": "/dvdstore/dvd/326",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/328",
+            "value": "/dvdstore/dvd/328",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/32812",
+            "value": "/dvdstore/dvd/32812",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/32813",
+            "value": "/dvdstore/dvd/32813",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/33",
+            "value": "/dvdstore/dvd/33",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/332",
+            "value": "/dvdstore/dvd/332",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/336",
+            "value": "/dvdstore/dvd/336",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/338",
+            "value": "/dvdstore/dvd/338",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/33848",
+            "value": "/dvdstore/dvd/33848",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/348",
+            "value": "/dvdstore/dvd/348",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/35",
+            "value": "/dvdstore/dvd/35",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/35352",
+            "value": "/dvdstore/dvd/35352",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/355",
+            "value": "/dvdstore/dvd/355",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/356",
+            "value": "/dvdstore/dvd/356",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/35842",
+            "value": "/dvdstore/dvd/35842",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/36",
+            "value": "/dvdstore/dvd/36",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/360",
+            "value": "/dvdstore/dvd/360",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/368",
+            "value": "/dvdstore/dvd/368",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/37",
+            "value": "/dvdstore/dvd/37",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/372",
+            "value": "/dvdstore/dvd/372",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/377",
+            "value": "/dvdstore/dvd/377",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/37894",
+            "value": "/dvdstore/dvd/37894",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/38",
+            "value": "/dvdstore/dvd/38",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/39",
+            "value": "/dvdstore/dvd/39",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/392",
+            "value": "/dvdstore/dvd/392",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/395",
+            "value": "/dvdstore/dvd/395",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/399",
+            "value": "/dvdstore/dvd/399",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/4",
+            "value": "/dvdstore/dvd/4",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/40",
+            "value": "/dvdstore/dvd/40",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/40382",
+            "value": "/dvdstore/dvd/40382",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/41",
+            "value": "/dvdstore/dvd/41",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/415",
+            "value": "/dvdstore/dvd/415",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/418",
+            "value": "/dvdstore/dvd/418",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/42",
+            "value": "/dvdstore/dvd/42",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/422",
+            "value": "/dvdstore/dvd/422",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/432",
+            "value": "/dvdstore/dvd/432",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/44",
+            "value": "/dvdstore/dvd/44",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/451",
+            "value": "/dvdstore/dvd/451",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/46",
+            "value": "/dvdstore/dvd/46",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/463",
+            "value": "/dvdstore/dvd/463",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/47",
+            "value": "/dvdstore/dvd/47",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/48",
+            "value": "/dvdstore/dvd/48",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/499",
+            "value": "/dvdstore/dvd/499",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/5",
+            "value": "/dvdstore/dvd/5",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/50",
+            "value": "/dvdstore/dvd/50",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/5189",
+            "value": "/dvdstore/dvd/5189",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/5190",
+            "value": "/dvdstore/dvd/5190",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/52",
+            "value": "/dvdstore/dvd/52",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/5384",
+            "value": "/dvdstore/dvd/5384",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/54",
+            "value": "/dvdstore/dvd/54",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/55",
+            "value": "/dvdstore/dvd/55",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/56",
+            "value": "/dvdstore/dvd/56",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/58",
+            "value": "/dvdstore/dvd/58",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/67",
+            "value": "/dvdstore/dvd/67",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/68",
+            "value": "/dvdstore/dvd/68",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/7",
+            "value": "/dvdstore/dvd/7",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/70",
+            "value": "/dvdstore/dvd/70",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/72",
+            "value": "/dvdstore/dvd/72",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/73",
+            "value": "/dvdstore/dvd/73",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/74",
+            "value": "/dvdstore/dvd/74",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/7461",
+            "value": "/dvdstore/dvd/7461",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/7462",
+            "value": "/dvdstore/dvd/7462",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/77",
+            "value": "/dvdstore/dvd/77",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/79",
+            "value": "/dvdstore/dvd/79",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/8",
+            "value": "/dvdstore/dvd/8",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/80",
+            "value": "/dvdstore/dvd/80",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/81",
+            "value": "/dvdstore/dvd/81",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/82",
+            "value": "/dvdstore/dvd/82",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/83",
+            "value": "/dvdstore/dvd/83",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/84",
+            "value": "/dvdstore/dvd/84",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/86",
+            "value": "/dvdstore/dvd/86",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/87",
+            "value": "/dvdstore/dvd/87",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/88",
+            "value": "/dvdstore/dvd/88",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/89",
+            "value": "/dvdstore/dvd/89",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/92",
+            "value": "/dvdstore/dvd/92",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/93",
+            "value": "/dvdstore/dvd/93",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/94",
+            "value": "/dvdstore/dvd/94",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/97",
+            "value": "/dvdstore/dvd/97",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/dvd/98",
+            "value": "/dvdstore/dvd/98",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/home",
+            "value": "/dvdstore/home",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/img/arrow-r.png",
+            "value": "/dvdstore/img/arrow-r.png",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/img/btn.bg.gif",
+            "value": "/dvdstore/img/btn.bg.gif",
+            "selected": false
+          },
+          {
+            "text": "/dvdstore/performancesettings",
+            "value": "/dvdstore/performancesettings",
+            "selected": false
+          }
+        ],
+        "query": "SHOW TAG VALUES FROM \"http\" WITH KEY = \"uri\"",
+        "refresh": 2,
+        "type": "query"
+      },
+      {
+        "current": {
+          "value": [
+            "DVDstore01_browse shop",
+            "DVDstore02_search"
+          ],
+          "text": "DVDstore01_browse shop + DVDstore02_search"
+        },
+        "datasource": "inspectit-influx",
+        "hide": 0,
+        "includeAll": true,
+        "label": "inspectIT Tagging Header",
+        "multi": true,
+        "name": "header",
+        "options": [
+          {
+            "text": "All",
+            "value": "$__all",
+            "selected": false
+          },
+          {
+            "text": "DVDstore01_browse shop",
+            "value": "DVDstore01_browse shop",
+            "selected": true
+          },
+          {
+            "text": "DVDstore02_search",
+            "value": "DVDstore02_search",
+            "selected": true
+          },
+          {
+            "text": "DVDstore03_browse results",
+            "value": "DVDstore03_browse results",
+            "selected": false
+          },
+          {
+            "text": "DVDstore06_checkout",
+            "value": "DVDstore06_checkout",
+            "selected": false
+          },
+          {
+            "text": "DVDstore07_purchase",
+            "value": "DVDstore07_purchase",
+            "selected": false
+          }
+        ],
+        "query": "SHOW TAG VALUES FROM \"http\" WITH KEY = \"inspectitTaggingHeader\"  WHERE uri=~ /$URI/",
+        "refresh": 2,
+        "type": "query"
+      }
+    ]
+  },
+  "annotations": {
+    "list": []
+  },
+  "refresh": false,
+  "schemaVersion": 12,
+  "version": 2,
+  "links": [],
+  "gnetId": null
+}

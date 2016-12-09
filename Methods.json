@@ -1,0 +1,6639 @@
+{
+  "id": 12,
+  "title": "Methods",
+  "tags": [],
+  "style": "dark",
+  "timezone": "browser",
+  "editable": true,
+  "hideControls": false,
+  "sharedCrosshair": false,
+  "rows": [
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "content": "<p align=\"center\" style=\"font-size:20px\">$Method</p>",
+          "editable": true,
+          "error": false,
+          "height": "15px",
+          "id": 3,
+          "isNew": true,
+          "links": [],
+          "mode": "html",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "com.jboss.dvd.seam.FullTextSearchAction.searchTitle(java.lang.String)",
+              "value": "com.jboss.dvd.seam.FullTextSearchAction.searchTitle(java.lang.String)",
+              "selected": false
+            }
+          },
+          "span": 12,
+          "title": "",
+          "transparent": true,
+          "type": "text"
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "id": 2,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "com.jboss.dvd.seam.FullTextSearchAction.searchTitle(java.lang.String)",
+              "value": "com.jboss.dvd.seam.FullTextSearchAction.searchTitle(java.lang.String)",
+              "selected": false
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "color": "#6ED0E0",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "avg",
+              "color": "#6ED0E0"
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "min",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "minDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "avg",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "query": "SELECT max(\"duration\") FROM \"businessTransactions\" WHERE \"applicationName\" =~ /^$Application$/ AND \"businessTxName\" =~ /^$BusinessTx$/ AND $timeFilter GROUP BY time(1m) fill(null)",
+              "rawQuery": false,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "avgDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "max",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "maxDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Response Time",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "id": 4,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "com.jboss.dvd.seam.FullTextSearchAction.searchTitle(java.lang.String)",
+              "value": "com.jboss.dvd.seam.FullTextSearchAction.searchTitle(java.lang.String)",
+              "selected": false
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "color": "#6ED0E0",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "avg",
+              "color": "#6ED0E0"
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "min",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "minCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "avg",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "query": "SELECT max(\"duration\") FROM \"businessTransactions\" WHERE \"applicationName\" =~ /^$Application$/ AND \"businessTxName\" =~ /^$BusinessTx$/ AND $timeFilter GROUP BY time(1m) fill(null)",
+              "rawQuery": false,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "avgCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "max",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "maxCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "CPU Time",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": "Method",
+      "scopedVars": {
+        "Method": {
+          "text": "com.jboss.dvd.seam.FullTextSearchAction.searchTitle(java.lang.String)",
+          "value": "com.jboss.dvd.seam.FullTextSearchAction.searchTitle(java.lang.String)",
+          "selected": false
+        }
+      },
+      "title": ""
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "content": "<p align=\"center\" style=\"font-size:20px\">$Method</p>",
+          "editable": true,
+          "error": false,
+          "height": "15px",
+          "id": 5,
+          "isNew": true,
+          "links": [],
+          "mode": "html",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "com.jboss.dvd.seam.FullTextSearchAction.searchTitleAndDescription(java.lang.String)",
+              "value": "com.jboss.dvd.seam.FullTextSearchAction.searchTitleAndDescription(java.lang.String)",
+              "selected": false
+            }
+          },
+          "span": 12,
+          "title": "",
+          "transparent": true,
+          "type": "text"
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "id": 6,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "com.jboss.dvd.seam.FullTextSearchAction.searchTitleAndDescription(java.lang.String)",
+              "value": "com.jboss.dvd.seam.FullTextSearchAction.searchTitleAndDescription(java.lang.String)",
+              "selected": false
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "color": "#6ED0E0",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "avg",
+              "color": "#6ED0E0"
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "min",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "minDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "avg",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "query": "SELECT max(\"duration\") FROM \"businessTransactions\" WHERE \"applicationName\" =~ /^$Application$/ AND \"businessTxName\" =~ /^$BusinessTx$/ AND $timeFilter GROUP BY time(1m) fill(null)",
+              "rawQuery": false,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "avgDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "max",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "maxDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Response Time",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "id": 7,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "com.jboss.dvd.seam.FullTextSearchAction.searchTitleAndDescription(java.lang.String)",
+              "value": "com.jboss.dvd.seam.FullTextSearchAction.searchTitleAndDescription(java.lang.String)",
+              "selected": false
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "color": "#6ED0E0",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "avg",
+              "color": "#6ED0E0"
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "min",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "minCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "avg",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "query": "SELECT max(\"duration\") FROM \"businessTransactions\" WHERE \"applicationName\" =~ /^$Application$/ AND \"businessTxName\" =~ /^$BusinessTx$/ AND $timeFilter GROUP BY time(1m) fill(null)",
+              "rawQuery": false,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "avgCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "max",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "maxCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "CPU Time",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": 1473847151561,
+      "repeatRowId": 1,
+      "scopedVars": {
+        "Method": {
+          "text": "com.jboss.dvd.seam.FullTextSearchAction.searchTitleAndDescription(java.lang.String)",
+          "value": "com.jboss.dvd.seam.FullTextSearchAction.searchTitleAndDescription(java.lang.String)",
+          "selected": false
+        }
+      },
+      "title": ""
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "content": "<p align=\"center\" style=\"font-size:20px\">$Method</p>",
+          "editable": true,
+          "error": false,
+          "height": "15px",
+          "id": 8,
+          "isNew": true,
+          "links": [],
+          "mode": "html",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "com.jboss.dvd.seam.FullTextSearchAction.searchTitleAndDescriptionWithOneWord(java.lang.String)",
+              "value": "com.jboss.dvd.seam.FullTextSearchAction.searchTitleAndDescriptionWithOneWord(java.lang.String)",
+              "selected": false
+            }
+          },
+          "span": 12,
+          "title": "",
+          "transparent": true,
+          "type": "text"
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "id": 9,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "com.jboss.dvd.seam.FullTextSearchAction.searchTitleAndDescriptionWithOneWord(java.lang.String)",
+              "value": "com.jboss.dvd.seam.FullTextSearchAction.searchTitleAndDescriptionWithOneWord(java.lang.String)",
+              "selected": false
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "color": "#6ED0E0",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "avg",
+              "color": "#6ED0E0"
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "min",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "minDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "avg",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "query": "SELECT max(\"duration\") FROM \"businessTransactions\" WHERE \"applicationName\" =~ /^$Application$/ AND \"businessTxName\" =~ /^$BusinessTx$/ AND $timeFilter GROUP BY time(1m) fill(null)",
+              "rawQuery": false,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "avgDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "max",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "maxDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Response Time",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "id": 10,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "com.jboss.dvd.seam.FullTextSearchAction.searchTitleAndDescriptionWithOneWord(java.lang.String)",
+              "value": "com.jboss.dvd.seam.FullTextSearchAction.searchTitleAndDescriptionWithOneWord(java.lang.String)",
+              "selected": false
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "color": "#6ED0E0",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "avg",
+              "color": "#6ED0E0"
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "min",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "minCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "avg",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "query": "SELECT max(\"duration\") FROM \"businessTransactions\" WHERE \"applicationName\" =~ /^$Application$/ AND \"businessTxName\" =~ /^$BusinessTx$/ AND $timeFilter GROUP BY time(1m) fill(null)",
+              "rawQuery": false,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "avgCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "max",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "maxCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "CPU Time",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": 1473847151561,
+      "repeatRowId": 1,
+      "scopedVars": {
+        "Method": {
+          "text": "com.jboss.dvd.seam.FullTextSearchAction.searchTitleAndDescriptionWithOneWord(java.lang.String)",
+          "value": "com.jboss.dvd.seam.FullTextSearchAction.searchTitleAndDescriptionWithOneWord(java.lang.String)",
+          "selected": false
+        }
+      },
+      "title": ""
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "content": "<p align=\"center\" style=\"font-size:20px\">$Method</p>",
+          "editable": true,
+          "error": false,
+          "height": "15px",
+          "id": 11,
+          "isNew": true,
+          "links": [],
+          "mode": "html",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "javax.faces.webapp.FacesServlet.service(javax.servlet.ServletRequest,javax.servlet.ServletResponse)",
+              "value": "javax.faces.webapp.FacesServlet.service(javax.servlet.ServletRequest,javax.servlet.ServletResponse)",
+              "selected": false
+            }
+          },
+          "span": 12,
+          "title": "",
+          "transparent": true,
+          "type": "text"
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "id": 12,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "javax.faces.webapp.FacesServlet.service(javax.servlet.ServletRequest,javax.servlet.ServletResponse)",
+              "value": "javax.faces.webapp.FacesServlet.service(javax.servlet.ServletRequest,javax.servlet.ServletResponse)",
+              "selected": false
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "color": "#6ED0E0",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "avg",
+              "color": "#6ED0E0"
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "min",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "minDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "avg",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "query": "SELECT max(\"duration\") FROM \"businessTransactions\" WHERE \"applicationName\" =~ /^$Application$/ AND \"businessTxName\" =~ /^$BusinessTx$/ AND $timeFilter GROUP BY time(1m) fill(null)",
+              "rawQuery": false,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "avgDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "max",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "maxDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Response Time",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "id": 13,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "javax.faces.webapp.FacesServlet.service(javax.servlet.ServletRequest,javax.servlet.ServletResponse)",
+              "value": "javax.faces.webapp.FacesServlet.service(javax.servlet.ServletRequest,javax.servlet.ServletResponse)",
+              "selected": false
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "color": "#6ED0E0",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "avg",
+              "color": "#6ED0E0"
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "min",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "minCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "avg",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "query": "SELECT max(\"duration\") FROM \"businessTransactions\" WHERE \"applicationName\" =~ /^$Application$/ AND \"businessTxName\" =~ /^$BusinessTx$/ AND $timeFilter GROUP BY time(1m) fill(null)",
+              "rawQuery": false,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "avgCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "max",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "maxCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "CPU Time",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": 1473847151561,
+      "repeatRowId": 1,
+      "scopedVars": {
+        "Method": {
+          "text": "javax.faces.webapp.FacesServlet.service(javax.servlet.ServletRequest,javax.servlet.ServletResponse)",
+          "value": "javax.faces.webapp.FacesServlet.service(javax.servlet.ServletRequest,javax.servlet.ServletResponse)",
+          "selected": false
+        }
+      },
+      "title": ""
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "content": "<p align=\"center\" style=\"font-size:20px\">$Method</p>",
+          "editable": true,
+          "error": false,
+          "height": "15px",
+          "id": 14,
+          "isNew": true,
+          "links": [],
+          "mode": "html",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "javax.servlet.http.HttpServlet.service(javax.servlet.ServletRequest,javax.servlet.ServletResponse)",
+              "value": "javax.servlet.http.HttpServlet.service(javax.servlet.ServletRequest,javax.servlet.ServletResponse)",
+              "selected": false
+            }
+          },
+          "span": 12,
+          "title": "",
+          "transparent": true,
+          "type": "text"
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "id": 15,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "javax.servlet.http.HttpServlet.service(javax.servlet.ServletRequest,javax.servlet.ServletResponse)",
+              "value": "javax.servlet.http.HttpServlet.service(javax.servlet.ServletRequest,javax.servlet.ServletResponse)",
+              "selected": false
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "color": "#6ED0E0",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "avg",
+              "color": "#6ED0E0"
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "min",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "minDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "avg",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "query": "SELECT max(\"duration\") FROM \"businessTransactions\" WHERE \"applicationName\" =~ /^$Application$/ AND \"businessTxName\" =~ /^$BusinessTx$/ AND $timeFilter GROUP BY time(1m) fill(null)",
+              "rawQuery": false,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "avgDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "max",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "maxDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Response Time",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "id": 16,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "javax.servlet.http.HttpServlet.service(javax.servlet.ServletRequest,javax.servlet.ServletResponse)",
+              "value": "javax.servlet.http.HttpServlet.service(javax.servlet.ServletRequest,javax.servlet.ServletResponse)",
+              "selected": false
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "color": "#6ED0E0",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "avg",
+              "color": "#6ED0E0"
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "min",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "minCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "avg",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "query": "SELECT max(\"duration\") FROM \"businessTransactions\" WHERE \"applicationName\" =~ /^$Application$/ AND \"businessTxName\" =~ /^$BusinessTx$/ AND $timeFilter GROUP BY time(1m) fill(null)",
+              "rawQuery": false,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "avgCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "max",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "maxCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "CPU Time",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": 1473847151561,
+      "repeatRowId": 1,
+      "scopedVars": {
+        "Method": {
+          "text": "javax.servlet.http.HttpServlet.service(javax.servlet.ServletRequest,javax.servlet.ServletResponse)",
+          "value": "javax.servlet.http.HttpServlet.service(javax.servlet.ServletRequest,javax.servlet.ServletResponse)",
+          "selected": false
+        }
+      },
+      "title": ""
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "content": "<p align=\"center\" style=\"font-size:20px\">$Method</p>",
+          "editable": true,
+          "error": false,
+          "height": "15px",
+          "id": 17,
+          "isNew": true,
+          "links": [],
+          "mode": "html",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "org.jboss.seam.servlet.SeamFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "value": "org.jboss.seam.servlet.SeamFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "selected": false
+            }
+          },
+          "span": 12,
+          "title": "",
+          "transparent": true,
+          "type": "text"
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "id": 18,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "org.jboss.seam.servlet.SeamFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "value": "org.jboss.seam.servlet.SeamFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "selected": false
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "color": "#6ED0E0",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "avg",
+              "color": "#6ED0E0"
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "min",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "minDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "avg",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "query": "SELECT max(\"duration\") FROM \"businessTransactions\" WHERE \"applicationName\" =~ /^$Application$/ AND \"businessTxName\" =~ /^$BusinessTx$/ AND $timeFilter GROUP BY time(1m) fill(null)",
+              "rawQuery": false,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "avgDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "max",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "maxDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Response Time",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "id": 19,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "org.jboss.seam.servlet.SeamFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "value": "org.jboss.seam.servlet.SeamFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "selected": false
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "color": "#6ED0E0",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "avg",
+              "color": "#6ED0E0"
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "min",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "minCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "avg",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "query": "SELECT max(\"duration\") FROM \"businessTransactions\" WHERE \"applicationName\" =~ /^$Application$/ AND \"businessTxName\" =~ /^$BusinessTx$/ AND $timeFilter GROUP BY time(1m) fill(null)",
+              "rawQuery": false,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "avgCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "max",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "maxCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "CPU Time",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": 1473847151561,
+      "repeatRowId": 1,
+      "scopedVars": {
+        "Method": {
+          "text": "org.jboss.seam.servlet.SeamFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+          "value": "org.jboss.seam.servlet.SeamFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+          "selected": false
+        }
+      },
+      "title": ""
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "content": "<p align=\"center\" style=\"font-size:20px\">$Method</p>",
+          "editable": true,
+          "error": false,
+          "height": "15px",
+          "id": 20,
+          "isNew": true,
+          "links": [],
+          "mode": "html",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "org.jboss.seam.web.ExceptionFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "value": "org.jboss.seam.web.ExceptionFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "selected": false
+            }
+          },
+          "span": 12,
+          "title": "",
+          "transparent": true,
+          "type": "text"
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "id": 21,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "org.jboss.seam.web.ExceptionFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "value": "org.jboss.seam.web.ExceptionFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "selected": false
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "color": "#6ED0E0",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "avg",
+              "color": "#6ED0E0"
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "min",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "minDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "avg",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "query": "SELECT max(\"duration\") FROM \"businessTransactions\" WHERE \"applicationName\" =~ /^$Application$/ AND \"businessTxName\" =~ /^$BusinessTx$/ AND $timeFilter GROUP BY time(1m) fill(null)",
+              "rawQuery": false,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "avgDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "max",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "maxDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Response Time",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "id": 22,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "org.jboss.seam.web.ExceptionFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "value": "org.jboss.seam.web.ExceptionFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "selected": false
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "color": "#6ED0E0",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "avg",
+              "color": "#6ED0E0"
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "min",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "minCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "avg",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "query": "SELECT max(\"duration\") FROM \"businessTransactions\" WHERE \"applicationName\" =~ /^$Application$/ AND \"businessTxName\" =~ /^$BusinessTx$/ AND $timeFilter GROUP BY time(1m) fill(null)",
+              "rawQuery": false,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "avgCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "max",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "maxCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "CPU Time",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": 1473847151561,
+      "repeatRowId": 1,
+      "scopedVars": {
+        "Method": {
+          "text": "org.jboss.seam.web.ExceptionFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+          "value": "org.jboss.seam.web.ExceptionFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+          "selected": false
+        }
+      },
+      "title": ""
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "content": "<p align=\"center\" style=\"font-size:20px\">$Method</p>",
+          "editable": true,
+          "error": false,
+          "height": "15px",
+          "id": 23,
+          "isNew": true,
+          "links": [],
+          "mode": "html",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "org.jboss.seam.web.HotDeployFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "value": "org.jboss.seam.web.HotDeployFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "selected": false
+            }
+          },
+          "span": 12,
+          "title": "",
+          "transparent": true,
+          "type": "text"
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "id": 24,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "org.jboss.seam.web.HotDeployFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "value": "org.jboss.seam.web.HotDeployFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "selected": false
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "color": "#6ED0E0",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "avg",
+              "color": "#6ED0E0"
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "min",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "minDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "avg",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "query": "SELECT max(\"duration\") FROM \"businessTransactions\" WHERE \"applicationName\" =~ /^$Application$/ AND \"businessTxName\" =~ /^$BusinessTx$/ AND $timeFilter GROUP BY time(1m) fill(null)",
+              "rawQuery": false,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "avgDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "max",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "maxDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Response Time",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "id": 25,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "org.jboss.seam.web.HotDeployFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "value": "org.jboss.seam.web.HotDeployFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "selected": false
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "color": "#6ED0E0",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "avg",
+              "color": "#6ED0E0"
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "min",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "minCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "avg",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "query": "SELECT max(\"duration\") FROM \"businessTransactions\" WHERE \"applicationName\" =~ /^$Application$/ AND \"businessTxName\" =~ /^$BusinessTx$/ AND $timeFilter GROUP BY time(1m) fill(null)",
+              "rawQuery": false,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "avgCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "max",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "maxCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "CPU Time",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": 1473847151561,
+      "repeatRowId": 1,
+      "scopedVars": {
+        "Method": {
+          "text": "org.jboss.seam.web.HotDeployFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+          "value": "org.jboss.seam.web.HotDeployFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+          "selected": false
+        }
+      },
+      "title": ""
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "content": "<p align=\"center\" style=\"font-size:20px\">$Method</p>",
+          "editable": true,
+          "error": false,
+          "height": "15px",
+          "id": 26,
+          "isNew": true,
+          "links": [],
+          "mode": "html",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "org.jboss.seam.web.IdentityFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "value": "org.jboss.seam.web.IdentityFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "selected": false
+            }
+          },
+          "span": 12,
+          "title": "",
+          "transparent": true,
+          "type": "text"
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "id": 27,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "org.jboss.seam.web.IdentityFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "value": "org.jboss.seam.web.IdentityFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "selected": false
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "color": "#6ED0E0",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "avg",
+              "color": "#6ED0E0"
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "min",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "minDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "avg",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "query": "SELECT max(\"duration\") FROM \"businessTransactions\" WHERE \"applicationName\" =~ /^$Application$/ AND \"businessTxName\" =~ /^$BusinessTx$/ AND $timeFilter GROUP BY time(1m) fill(null)",
+              "rawQuery": false,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "avgDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "max",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "maxDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Response Time",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "id": 28,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "org.jboss.seam.web.IdentityFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "value": "org.jboss.seam.web.IdentityFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "selected": false
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "color": "#6ED0E0",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "avg",
+              "color": "#6ED0E0"
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "min",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "minCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "avg",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "query": "SELECT max(\"duration\") FROM \"businessTransactions\" WHERE \"applicationName\" =~ /^$Application$/ AND \"businessTxName\" =~ /^$BusinessTx$/ AND $timeFilter GROUP BY time(1m) fill(null)",
+              "rawQuery": false,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "avgCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "max",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "maxCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "CPU Time",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": 1473847151561,
+      "repeatRowId": 1,
+      "scopedVars": {
+        "Method": {
+          "text": "org.jboss.seam.web.IdentityFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+          "value": "org.jboss.seam.web.IdentityFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+          "selected": false
+        }
+      },
+      "title": ""
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "content": "<p align=\"center\" style=\"font-size:20px\">$Method</p>",
+          "editable": true,
+          "error": false,
+          "height": "15px",
+          "id": 29,
+          "isNew": true,
+          "links": [],
+          "mode": "html",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "org.jboss.seam.web.LoggingFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "value": "org.jboss.seam.web.LoggingFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "selected": false
+            }
+          },
+          "span": 12,
+          "title": "",
+          "transparent": true,
+          "type": "text"
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "id": 30,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "org.jboss.seam.web.LoggingFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "value": "org.jboss.seam.web.LoggingFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "selected": false
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "color": "#6ED0E0",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "avg",
+              "color": "#6ED0E0"
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "min",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "minDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "avg",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "query": "SELECT max(\"duration\") FROM \"businessTransactions\" WHERE \"applicationName\" =~ /^$Application$/ AND \"businessTxName\" =~ /^$BusinessTx$/ AND $timeFilter GROUP BY time(1m) fill(null)",
+              "rawQuery": false,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "avgDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "max",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "maxDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Response Time",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "id": 31,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "org.jboss.seam.web.LoggingFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "value": "org.jboss.seam.web.LoggingFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "selected": false
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "color": "#6ED0E0",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "avg",
+              "color": "#6ED0E0"
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "min",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "minCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "avg",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "query": "SELECT max(\"duration\") FROM \"businessTransactions\" WHERE \"applicationName\" =~ /^$Application$/ AND \"businessTxName\" =~ /^$BusinessTx$/ AND $timeFilter GROUP BY time(1m) fill(null)",
+              "rawQuery": false,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "avgCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "max",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "maxCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "CPU Time",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": 1473847151561,
+      "repeatRowId": 1,
+      "scopedVars": {
+        "Method": {
+          "text": "org.jboss.seam.web.LoggingFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+          "value": "org.jboss.seam.web.LoggingFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+          "selected": false
+        }
+      },
+      "title": ""
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "content": "<p align=\"center\" style=\"font-size:20px\">$Method</p>",
+          "editable": true,
+          "error": false,
+          "height": "15px",
+          "id": 32,
+          "isNew": true,
+          "links": [],
+          "mode": "html",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "org.jboss.seam.web.MultipartFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "value": "org.jboss.seam.web.MultipartFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "selected": false
+            }
+          },
+          "span": 12,
+          "title": "",
+          "transparent": true,
+          "type": "text"
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "id": 33,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "org.jboss.seam.web.MultipartFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "value": "org.jboss.seam.web.MultipartFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "selected": false
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "color": "#6ED0E0",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "avg",
+              "color": "#6ED0E0"
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "min",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "minDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "avg",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "query": "SELECT max(\"duration\") FROM \"businessTransactions\" WHERE \"applicationName\" =~ /^$Application$/ AND \"businessTxName\" =~ /^$BusinessTx$/ AND $timeFilter GROUP BY time(1m) fill(null)",
+              "rawQuery": false,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "avgDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "max",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "maxDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Response Time",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "id": 34,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "org.jboss.seam.web.MultipartFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "value": "org.jboss.seam.web.MultipartFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "selected": false
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "color": "#6ED0E0",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "avg",
+              "color": "#6ED0E0"
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "min",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "minCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "avg",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "query": "SELECT max(\"duration\") FROM \"businessTransactions\" WHERE \"applicationName\" =~ /^$Application$/ AND \"businessTxName\" =~ /^$BusinessTx$/ AND $timeFilter GROUP BY time(1m) fill(null)",
+              "rawQuery": false,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "avgCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "max",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "maxCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "CPU Time",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": 1473847151561,
+      "repeatRowId": 1,
+      "scopedVars": {
+        "Method": {
+          "text": "org.jboss.seam.web.MultipartFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+          "value": "org.jboss.seam.web.MultipartFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+          "selected": false
+        }
+      },
+      "title": ""
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "content": "<p align=\"center\" style=\"font-size:20px\">$Method</p>",
+          "editable": true,
+          "error": false,
+          "height": "15px",
+          "id": 35,
+          "isNew": true,
+          "links": [],
+          "mode": "html",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "org.jboss.seam.web.RedirectFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "value": "org.jboss.seam.web.RedirectFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "selected": false
+            }
+          },
+          "span": 12,
+          "title": "",
+          "transparent": true,
+          "type": "text"
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "id": 36,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "org.jboss.seam.web.RedirectFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "value": "org.jboss.seam.web.RedirectFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "selected": false
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "color": "#6ED0E0",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "avg",
+              "color": "#6ED0E0"
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "min",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "minDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "avg",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "query": "SELECT max(\"duration\") FROM \"businessTransactions\" WHERE \"applicationName\" =~ /^$Application$/ AND \"businessTxName\" =~ /^$BusinessTx$/ AND $timeFilter GROUP BY time(1m) fill(null)",
+              "rawQuery": false,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "avgDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "max",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "maxDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Response Time",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "id": 37,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "org.jboss.seam.web.RedirectFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "value": "org.jboss.seam.web.RedirectFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "selected": false
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "color": "#6ED0E0",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "avg",
+              "color": "#6ED0E0"
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "min",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "minCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "avg",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "query": "SELECT max(\"duration\") FROM \"businessTransactions\" WHERE \"applicationName\" =~ /^$Application$/ AND \"businessTxName\" =~ /^$BusinessTx$/ AND $timeFilter GROUP BY time(1m) fill(null)",
+              "rawQuery": false,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "avgCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "max",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "maxCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "CPU Time",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": 1473847151561,
+      "repeatRowId": 1,
+      "scopedVars": {
+        "Method": {
+          "text": "org.jboss.seam.web.RedirectFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+          "value": "org.jboss.seam.web.RedirectFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+          "selected": false
+        }
+      },
+      "title": ""
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "content": "<p align=\"center\" style=\"font-size:20px\">$Method</p>",
+          "editable": true,
+          "error": false,
+          "height": "15px",
+          "id": 38,
+          "isNew": true,
+          "links": [],
+          "mode": "html",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "org.tuckey.web.filters.urlrewrite.UrlRewriteFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "value": "org.tuckey.web.filters.urlrewrite.UrlRewriteFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "selected": false
+            }
+          },
+          "span": 12,
+          "title": "",
+          "transparent": true,
+          "type": "text"
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "id": 39,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "org.tuckey.web.filters.urlrewrite.UrlRewriteFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "value": "org.tuckey.web.filters.urlrewrite.UrlRewriteFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "selected": false
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "color": "#6ED0E0",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "avg",
+              "color": "#6ED0E0"
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "min",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "minDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "avg",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "query": "SELECT max(\"duration\") FROM \"businessTransactions\" WHERE \"applicationName\" =~ /^$Application$/ AND \"businessTxName\" =~ /^$BusinessTx$/ AND $timeFilter GROUP BY time(1m) fill(null)",
+              "rawQuery": false,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "avgDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "max",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "maxDuration"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Response Time",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "inspectit-influx",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "id": 40,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1473847151561,
+          "scopedVars": {
+            "Method": {
+              "text": "org.tuckey.web.filters.urlrewrite.UrlRewriteFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "value": "org.tuckey.web.filters.urlrewrite.UrlRewriteFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+              "selected": false
+            }
+          },
+          "seriesOverrides": [
+            {
+              "alias": "max",
+              "fillBelowTo": "min",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "min",
+              "color": "#6ED0E0",
+              "legend": false,
+              "lines": false
+            },
+            {
+              "alias": "avg",
+              "color": "#6ED0E0"
+            }
+          ],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "min",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "minCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "min"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "avg",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "query": "SELECT max(\"duration\") FROM \"businessTransactions\" WHERE \"applicationName\" =~ /^$Application$/ AND \"businessTxName\" =~ /^$BusinessTx$/ AND $timeFilter GROUP BY time(1m) fill(null)",
+              "rawQuery": false,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "avgCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            },
+            {
+              "alias": "max",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "1m"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "methods",
+              "policy": "default",
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "maxCpuTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "max"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "fqnMethodSignature",
+                  "operator": "=~",
+                  "value": "/^$Method$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "CPU Time",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": 1473847151561,
+      "repeatRowId": 1,
+      "scopedVars": {
+        "Method": {
+          "text": "org.tuckey.web.filters.urlrewrite.UrlRewriteFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+          "value": "org.tuckey.web.filters.urlrewrite.UrlRewriteFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+          "selected": false
+        }
+      },
+      "title": ""
+    }
+  ],
+  "time": {
+    "from": "2016-09-14T09:35:41.638Z",
+    "to": "2016-09-14T11:04:47.457Z"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "value": [
+            "$__all"
+          ],
+          "text": "All"
+        },
+        "datasource": "inspectit-influx",
+        "hide": 0,
+        "includeAll": true,
+        "multi": true,
+        "name": "Class",
+        "options": [
+          {
+            "text": "All",
+            "value": "$__all",
+            "selected": true
+          },
+          {
+            "text": "com.jboss.dvd.seam.FullTextSearchAction",
+            "value": "com.jboss.dvd.seam.FullTextSearchAction",
+            "selected": false
+          },
+          {
+            "text": "javax.faces.webapp.FacesServlet",
+            "value": "javax.faces.webapp.FacesServlet",
+            "selected": false
+          },
+          {
+            "text": "javax.servlet.http.HttpServlet",
+            "value": "javax.servlet.http.HttpServlet",
+            "selected": false
+          },
+          {
+            "text": "org.jboss.seam.servlet.SeamFilter",
+            "value": "org.jboss.seam.servlet.SeamFilter",
+            "selected": false
+          },
+          {
+            "text": "org.jboss.seam.web.ExceptionFilter",
+            "value": "org.jboss.seam.web.ExceptionFilter",
+            "selected": false
+          },
+          {
+            "text": "org.jboss.seam.web.HotDeployFilter",
+            "value": "org.jboss.seam.web.HotDeployFilter",
+            "selected": false
+          },
+          {
+            "text": "org.jboss.seam.web.IdentityFilter",
+            "value": "org.jboss.seam.web.IdentityFilter",
+            "selected": false
+          },
+          {
+            "text": "org.jboss.seam.web.LoggingFilter",
+            "value": "org.jboss.seam.web.LoggingFilter",
+            "selected": false
+          },
+          {
+            "text": "org.jboss.seam.web.MultipartFilter",
+            "value": "org.jboss.seam.web.MultipartFilter",
+            "selected": false
+          },
+          {
+            "text": "org.jboss.seam.web.RedirectFilter",
+            "value": "org.jboss.seam.web.RedirectFilter",
+            "selected": false
+          },
+          {
+            "text": "org.tuckey.web.filters.urlrewrite.UrlRewriteFilter",
+            "value": "org.tuckey.web.filters.urlrewrite.UrlRewriteFilter",
+            "selected": false
+          }
+        ],
+        "query": "SHOW TAG VALUES FROM \"methods\" WITH KEY = \"classFqn\"",
+        "refresh": 2,
+        "type": "query"
+      },
+      {
+        "current": {
+          "value": [
+            "$__all"
+          ],
+          "text": "All"
+        },
+        "datasource": "inspectit-influx",
+        "hide": 0,
+        "includeAll": true,
+        "multi": true,
+        "name": "Method",
+        "options": [
+          {
+            "text": "All",
+            "value": "$__all",
+            "selected": true
+          },
+          {
+            "text": "com.jboss.dvd.seam.FullTextSearchAction.searchTitle(java.lang.String)",
+            "value": "com.jboss.dvd.seam.FullTextSearchAction.searchTitle(java.lang.String)",
+            "selected": false
+          },
+          {
+            "text": "com.jboss.dvd.seam.FullTextSearchAction.searchTitleAndDescription(java.lang.String)",
+            "value": "com.jboss.dvd.seam.FullTextSearchAction.searchTitleAndDescription(java.lang.String)",
+            "selected": false
+          },
+          {
+            "text": "com.jboss.dvd.seam.FullTextSearchAction.searchTitleAndDescriptionWithOneWord(java.lang.String)",
+            "value": "com.jboss.dvd.seam.FullTextSearchAction.searchTitleAndDescriptionWithOneWord(java.lang.String)",
+            "selected": false
+          },
+          {
+            "text": "javax.faces.webapp.FacesServlet.service(javax.servlet.ServletRequest,javax.servlet.ServletResponse)",
+            "value": "javax.faces.webapp.FacesServlet.service(javax.servlet.ServletRequest,javax.servlet.ServletResponse)",
+            "selected": false
+          },
+          {
+            "text": "javax.servlet.http.HttpServlet.service(javax.servlet.ServletRequest,javax.servlet.ServletResponse)",
+            "value": "javax.servlet.http.HttpServlet.service(javax.servlet.ServletRequest,javax.servlet.ServletResponse)",
+            "selected": false
+          },
+          {
+            "text": "org.jboss.seam.servlet.SeamFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+            "value": "org.jboss.seam.servlet.SeamFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+            "selected": false
+          },
+          {
+            "text": "org.jboss.seam.web.ExceptionFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+            "value": "org.jboss.seam.web.ExceptionFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+            "selected": false
+          },
+          {
+            "text": "org.jboss.seam.web.HotDeployFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+            "value": "org.jboss.seam.web.HotDeployFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+            "selected": false
+          },
+          {
+            "text": "org.jboss.seam.web.IdentityFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+            "value": "org.jboss.seam.web.IdentityFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+            "selected": false
+          },
+          {
+            "text": "org.jboss.seam.web.LoggingFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+            "value": "org.jboss.seam.web.LoggingFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+            "selected": false
+          },
+          {
+            "text": "org.jboss.seam.web.MultipartFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+            "value": "org.jboss.seam.web.MultipartFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+            "selected": false
+          },
+          {
+            "text": "org.jboss.seam.web.RedirectFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+            "value": "org.jboss.seam.web.RedirectFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+            "selected": false
+          },
+          {
+            "text": "org.tuckey.web.filters.urlrewrite.UrlRewriteFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+            "value": "org.tuckey.web.filters.urlrewrite.UrlRewriteFilter.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain)",
+            "selected": false
+          }
+        ],
+        "query": "SHOW TAG VALUES FROM \"methods\" WITH KEY = \"fqnMethodSignature\"  WHERE classFqn=~ /$Class/",
+        "refresh": 2,
+        "type": "query"
+      }
+    ]
+  },
+  "annotations": {
+    "list": []
+  },
+  "refresh": false,
+  "schemaVersion": 12,
+  "version": 4,
+  "links": [],
+  "gnetId": null
+}
