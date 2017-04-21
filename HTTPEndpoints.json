@@ -16,7 +16,7 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": "inspectit-influx",
+          "datasource": "inspectit",
           "editable": true,
           "error": false,
           "fill": 0,
@@ -165,7 +165,7 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": "inspectit-influx",
+          "datasource": "inspectit",
           "editable": true,
           "error": false,
           "fill": 0,
@@ -322,8 +322,8 @@
     }
   ],
   "time": {
-    "from": "2016-09-14T09:35:41.638Z",
-    "to": "2016-09-14T11:04:47.457Z"
+    "from": "now-30m",
+    "to": "now"
   },
   "timepicker": {
     "refresh_intervals": [
@@ -360,7 +360,7 @@
           ],
           "text": "/dvdstore/browse + /dvdstore/checkout"
         },
-        "datasource": "inspectit-influx",
+        "datasource": "inspectit",
         "hide": 0,
         "includeAll": true,
         "multi": true,
@@ -1449,7 +1449,7 @@
           ],
           "text": "DVDstore01_browse shop + DVDstore02_search"
         },
-        "datasource": "inspectit-influx",
+        "datasource": "inspectit",
         "hide": 0,
         "includeAll": true,
         "label": "inspectIT Tagging Header",

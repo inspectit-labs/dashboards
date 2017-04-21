@@ -43,7 +43,7 @@
             "used heap memory": "#6ED0E0"
           },
           "bars": false,
-          "datasource": "inspectit-influx",
+          "datasource": "inspectit",
           "editable": true,
           "error": false,
           "fill": 0,
@@ -271,7 +271,7 @@
             "used heap memory": "#6ED0E0"
           },
           "bars": false,
-          "datasource": "inspectit-influx",
+          "datasource": "inspectit",
           "editable": true,
           "error": false,
           "fill": 0,
@@ -553,7 +553,7 @@
             "used heap memory": "#6ED0E0"
           },
           "bars": false,
-          "datasource": "inspectit-influx",
+          "datasource": "inspectit",
           "editable": true,
           "error": false,
           "fill": 0,
@@ -871,7 +871,7 @@
             "used heap memory": "#6ED0E0"
           },
           "bars": false,
-          "datasource": "inspectit-influx",
+          "datasource": "inspectit",
           "editable": true,
           "error": false,
           "fill": 0,
@@ -1099,7 +1099,7 @@
             "used heap memory": "#6ED0E0"
           },
           "bars": false,
-          "datasource": "inspectit-influx",
+          "datasource": "inspectit",
           "editable": true,
           "error": false,
           "fill": 0,
@@ -1381,7 +1381,7 @@
             "used heap memory": "#6ED0E0"
           },
           "bars": false,
-          "datasource": "inspectit-influx",
+          "datasource": "inspectit",
           "editable": true,
           "error": false,
           "fill": 0,
@@ -1668,7 +1668,7 @@
     }
   ],
   "time": {
-    "from": "now-1h",
+    "from": "now-30m",
     "to": "now"
   },
   "timepicker": {
