@@ -129,7 +129,7 @@
             "used heap memory": "#6ED0E0"
           },
           "bars": false,
-          "datasource": "inspectit-influx",
+          "datasource": "inspectit",
           "editable": true,
           "error": false,
           "fill": 0,
@@ -372,7 +372,7 @@
             "used heap memory": "#6ED0E0"
           },
           "bars": false,
-          "datasource": "inspectit-influx",
+          "datasource": "inspectit",
           "editable": true,
           "error": false,
           "fill": 0,
@@ -646,7 +646,7 @@
             "used heap memory": "#6ED0E0"
           },
           "bars": false,
-          "datasource": "inspectit-influx",
+          "datasource": "inspectit",
           "editable": true,
           "error": false,
           "fill": 0,
@@ -923,7 +923,7 @@
             "used heap memory": "#6ED0E0"
           },
           "bars": false,
-          "datasource": "inspectit-influx",
+          "datasource": "inspectit",
           "editable": true,
           "error": false,
           "fill": 5,
@@ -1318,7 +1318,7 @@
             "used heap memory": "#6ED0E0"
           },
           "bars": false,
-          "datasource": "inspectit-influx",
+          "datasource": "inspectit",
           "decimals": 0,
           "editable": true,
           "error": false,

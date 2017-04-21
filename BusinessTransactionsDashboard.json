@@ -32,7 +32,7 @@
               "value": "max"
             }
           ],
-          "datasource": "inspectit-influx",
+          "datasource": "inspectit",
           "editable": true,
           "error": false,
           "fontSize": "100%",
@@ -400,7 +400,7 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": "inspectit-influx",
+          "datasource": "inspectit",
           "editable": true,
           "error": false,
           "fill": 1,
@@ -622,7 +622,7 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": "inspectit-influx",
+          "datasource": "inspectit",
           "editable": true,
           "error": false,
           "fill": 1,
@@ -746,7 +746,7 @@
     }
   ],
   "time": {
-    "from": "now-1h",
+    "from": "now-30m",
     "to": "now"
   },
   "timepicker": {
@@ -781,7 +781,7 @@
           "text": "DVDStore",
           "value": "DVDStore"
         },
-        "datasource": "inspectit-influx",
+        "datasource": "inspectit",
         "hide": 0,
         "includeAll": false,
         "multi": false,
@@ -807,7 +807,7 @@
           "text": "Home",
           "value": "Home"
         },
-        "datasource": "inspectit-influx",
+        "datasource": "inspectit",
         "hide": 0,
         "includeAll": false,
         "multi": false,
